@@ -1,0 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Fuggles&family=Merriweather:wght@400;700&display=swap");
+html {
+  font-family: "Fuggles", "cursive";
+  font-family: "Merriweather", serif;
+}
+
+body {
+  margin: 0;
+  background-color: rgb(51, 49, 49);
+}

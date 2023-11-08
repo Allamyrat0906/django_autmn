@@ -1,5 +1,7 @@
-from django.http import HttpResponse, HttpResponseNotFound
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.shortcuts import render
+from django.urls import reverse
+
 
 # Create your views here.
 
@@ -16,59 +18,38 @@ challenges_dict = {
     "september": "this month september",
     "october": "this month october",
     "november": "this month november",
-    "december": "this month december",
+    "december": None
 }
 
 
 def index(request):
-    return HttpResponse("hi")
+    months = list(challenges_dict.keys())
+    return render(request, "challenges/index.html", {
+        "months": months
+    })
 
 
-def january(request):
-    return HttpResponse("coming januray")
+def month_number(request, month):
+    months = list(challenges_dict.keys())
 
-
-def february(request):
-    return HttpResponse("coming february")
-
-
-def march(request):
-    return HttpResponse("coming march")
-
-
-def month_challenge(request, month):
-    # return HttpResponse(month)
-    text_challenges = None
-    if month == "january":
-        text_challenges = "january month"
-    elif month == "february":
-        text_challenges = "february month"
-    elif month == "march":
-        text_challenges = "march month"
-    else:
+    if month > len(months):
         return HttpResponseNotFound("Invalid month")
-    return HttpResponse(text_challenges)
-
-# number
-
-
-def month_challenges_number(request, month):
-
-    list_month_challenges = list(challenges_dict.keys())
-    if len(list_month_challenges) >= month:
-        months = list_month_challenges[month-1]
-        return HttpResponse(months)
-    else:
-        return HttpResponseNotFound("month only contains 12 numbers")
-
-# string
+    redirect_month = months[month-1]
+    redirect_path = reverse("month-challenge", args=[redirect_month])
+    return HttpResponseRedirect(redirect_path)
 
 
-def month_challenges_string(request, month):
-    list_month_challenges = challenges_dict[month]
-    return HttpResponse(list_month_challenges)
+def month_dict(request, month):
+    try:
+        challenges_text = challenges_dict[month]
+        # response_data = f"<h1>{challenges_text}</h1>"
+        # return HttpResponse(response_data)
 
-
-def get_templates(request, month):
-    list_month_challenges = challenges_dict[month]
-    return HttpResponse(f"<h1>{ list_month_challenges}</h1>")
+        return render(request, "challenges.html", {
+            "text": challenges_text,
+            "month_name": month.capitalize()
+        })
+    except:
+        # response_data = render_to_string("404.html")
+        # return HttpResponseNotFound(response_data)
+        return HttpResponseNotFound("not founded")
