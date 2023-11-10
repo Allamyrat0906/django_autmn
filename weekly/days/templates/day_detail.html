@@ -1,0 +1,16 @@
+{%extends "base.html" %}
+<!---->{%load static%}
+<head>
+  {% block title %}{{day}}{%endblock%}
+  <!---->
+  {% block css_files%}
+  <!---->
+  <link rel="stylesheet" href="{% static "days_detail.css" %}"/>
+  <!---->
+  {%endblock%}
+</head>
+<body>
+  {%block content%}
+  <h1>{{days_detail}}</h1>
+  {%endblock%}
+</body>

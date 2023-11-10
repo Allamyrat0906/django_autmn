@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+<!---->
+{% load static %}
+
+<head>
+  {%block title%}All Day{%endblock%}
+  <!---->
+  {% block css_files %}
+  <!---->
+  <link rel="stylesheet" href="{% static 'base.css' %}" />
+  <!---->
+  {%endblock%}
+</head>
+<body>
+  {%block content%}
+  <!---->
+  {% for days in days_name %}
+  <ul>
+    <li>
+      <a href="{% url 'days_detail' days %}"> {{days}} </a>
+    </li>
+  </ul>
+
+  {% endfor %}
+  <!---->{% endblock %}
+</body>

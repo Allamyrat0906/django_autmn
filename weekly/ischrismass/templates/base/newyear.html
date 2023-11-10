@@ -1,0 +1,24 @@
+{% extends "base.html"%}
+<!---->
+{% load static%}
+
+<head>
+  {% block css_files%}
+  <!---->
+  <link rel="stylesheet" href="{% static "base/newyear.css" %}"/>
+  <!---->
+  {%endblock%}
+</head>
+<body>
+  {%block content%}
+  <!---->
+  {%if isnewyear %}
+  <!---->
+  <h1>yes</h1>
+  <!---->{% else %}
+  <!---->
+  <h1>NO</h1>
+  {% endif %}
+  <!---->
+  {%endblock%}
+</body>
