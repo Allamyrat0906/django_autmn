@@ -5,6 +5,7 @@ import datetime
 
 def newyear(request):
     now = datetime.datetime.now()
+    isnewyear = (now.month == 1 and now.day == 1)
     return render(request, "base/newyear.html", {
-        "isnewyear": now.month == 1 and now.day == 1
+        "isnewyear": isnewyear
     })

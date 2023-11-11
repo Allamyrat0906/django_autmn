@@ -3,22 +3,23 @@
 {% load static%}
 
 <head>
-  {% block css_files%}
+  {% block css_files %}
   <!---->
-  <link rel="stylesheet" href="{% static "base/newyear.css" %}"/>
+  <link rel="stylesheet" href="{% static 'base/newyear.css' %}" />
   <!---->
-  {%endblock%}
+  {% endblock %}
 </head>
-<body>
-  {%block content%}
+
+{%block content%}
+<body style="background-color: rgb(38, 36, 66)">
   <!---->
   {%if isnewyear %}
   <!---->
-  <h1>yes</h1>
+  <h1>YES</h1>
   <!---->{% else %}
   <!---->
-  <h1>NO</h1>
+  <h1 style="color: #54fa89; font-size: 250px">NO</h1>
   {% endif %}
   <!---->
-  {%endblock%}
 </body>
+{%endblock%}
