@@ -13,10 +13,7 @@ def all_books(request):
     })
 
 
-def book_detail(request, id):
-    book_detail = get_object_or_404(Books, pk=id)
-    #book_detail = Books.objects.get(pk=id)
+def book_detail(request, slug):
+    book_instance = get_object_or_404(Books, slug=slug)
     return render(request, "books/book_detail.html",
-                  {
-                      "book_detail": book_detail
-                  })
+                  {"book_instance": book_instance})

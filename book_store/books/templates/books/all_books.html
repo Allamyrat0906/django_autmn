@@ -6,10 +6,10 @@
     <title>Document</title>
   </head>
   <body>
-    {% for book in books%}
+    {%for book in books %}
     <ul>
       <li>
-        <a href="{%url 'book-detail' book.id%}">{{book.title}}</a>
+        <a href="{{book.get_absolute_url}}">{{book.title}}</a>
       </li>
     </ul>
     {%endfor%}

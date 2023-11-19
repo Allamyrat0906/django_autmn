@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
-from jupyterlab_server import slugify
+from django.utils.text import slugify
+# from jupyterlab_server import slugify
 
 # Create your models here.
 

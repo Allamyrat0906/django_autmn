@@ -1,0 +1,16 @@
+{% extends "libary/base.html" %}
+<!---->
+
+{% block title%} {{books.title}} {%endblock%}
+<!---->
+{%block content%}
+<!---->
+{% for book in books%}
+<ul>
+  <a href="{{ book.get_absolute_url }}"
+    ><li>{{book.title}} Rating:({{book.rating}})</li></a
+  >
+</ul>
+{% endfor %}
+<!---->
+{% endblock %}
