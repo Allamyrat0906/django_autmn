@@ -1,39 +1,21 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <link rel="stylesheet" href="{% static "reviews/styles.css"%}">
-    <title>Your Reviews</title>
-  </head>
-  <body>
-    <form action="/" method="POST">
-      <!---->
-      {% csrf_token %}
-      <!---->
-      <div class="form-control" {% if form.user_name.errors %}errors{%endif%}>
-        {{form.user_name.label_tag}}
-        <!---->
-        {{form.user_name}}
-        <!---->
-        {{form.user_name.errors}}
-      </div>
-      <div class="form-control" {% if form.comment.errors %}errors{%endif%}>
-        {{form.comment.label_tag}}
-        <!---->
-        {{form.comment}}
-        <!---->
-        {{form.comment.errors}}
-      </div>
-
-      <div class="form-control" {% if form.rating.errors %}errors{%endif%}>
-        {{form.rating.label_tag}}
-        <!---->
-        {{form.rating}}
-        <!---->
-        {{form.rating.errors}}
-      </div>
-
-      <button type="submit">Send</button>
-    </form>
-  </body>
-</html>
+{% extends "reviews/base.html" %}
+<!---->
+{%block title %}Your Review{%endblock%}
+<!---->
+{%block content %}
+<form action="/" method="POST">
+  <!---->
+  {% csrf_token %}
+  <!---->
+  {% for field in form%}
+  <div class="form-control" {% if form.field.errors %}errors{%endif%}>
+    {{field.label_tag}}
+    <!---->
+    {{field}}
+    <!---->
+    {{ffield.errors}}
+  </div>
+  {% endfor %}
+  <button type="submit">Send</button>
+</form>
+{%endblock%}

@@ -1,0 +1,9 @@
+{%extends "reviews/base.html"%}
+<!---->
+{%block content%}
+<ul>
+  {%for re in all_review%}
+  <li><h2>{{re.user_name}} Rating : ( {{re.rating}})</h2></li>
+  {%endfor%}
+</ul>
+{%endblock%}
