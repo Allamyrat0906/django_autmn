@@ -1,0 +1,16 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" href="{% static "styles.css" %}"/>
+    <title>Profiles</title>
+  </head>
+  <body>
+    <form action="/profiles/" method="POST" enctype="multipart/data">
+      {% csrf_token %}
+      <!---->
+      {{form}}
+      <button>Uploads</button>
+    </form>
+  </body>
+</html>
